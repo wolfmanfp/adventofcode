@@ -1,6 +1,7 @@
 fun main() {
-    val day01Part1 = Day01().solvePartOne()
-    val day01Part2 = Day01().solvePartTwo()
-    println(day01Part1)
-    println(day01Part2)
+    val list = readInput("day02")
+    val part1 = Day02.solvePartOne(list)
+    val part2 = Day02.solvePartTwo(list)
+    println(part1)
+    println(part2)
 }

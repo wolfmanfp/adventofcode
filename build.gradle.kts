@@ -11,3 +11,7 @@ tasks {
         gradleVersion = "7.3"
     }
 }
+
+dependencies {
+    testImplementation(kotlin("test-junit"))
+}
