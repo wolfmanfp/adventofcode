@@ -16,7 +16,7 @@ class Day01 : IDay {
         for (str in list) {
             val state = rotateDial(dial, str)
             dial = state.dial
-            if (state.pointedAtZero) zeroCount++
+            zeroCount += state.timesPointedAtZero
         }
         return zeroCount
     }
@@ -24,7 +24,7 @@ class Day01 : IDay {
     fun rotateDial(prev: Int, cmd: String): DialState {
         var dial = prev
         var rotation = 0
-        var pointedAtZero = false
+        var pointedAtZero = 0
 
         if (cmd.startsWith("L")) {
             rotation = cmd.substring(1).toInt() * -1
@@ -35,15 +35,15 @@ class Day01 : IDay {
         if (rotation > 0) {
             for (i in 0 until rotation) {
                 dial++
-                if (dial == 100) {
-                    pointedAtZero = true
+                if (dial % 100 == 0) {
+                    pointedAtZero++
                 }
             }
         } else if (rotation < 0) {
             for (i in rotation until 0) {
                 dial--
-                if (dial == 0) {
-                    pointedAtZero = true
+                if (dial % 100 == 0) {
+                    pointedAtZero++
                 }
             }
             dial += 100
@@ -52,5 +52,5 @@ class Day01 : IDay {
         return DialState(dial % 100, pointedAtZero)
     }
 
-data class DialState(val dial: Int, val pointedAtZero: Boolean)
+data class DialState(val dial: Int, val timesPointedAtZero: Int)
 }
