@@ -1,7 +1,6 @@
-import kotlin.io.path.Path
-import kotlin.io.path.readText
+import java.io.File
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = Path("src/resources/$name.txt").readText(Charsets.UTF_8).trim().lines()
+fun readInput(name: String) = File({}::class.java.getResource("$name.txt")?.file).readLines()
